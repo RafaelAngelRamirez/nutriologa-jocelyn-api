@@ -22,6 +22,10 @@ mongoose
 app.use(bodyParser.json())
 app.use(routes)
 
+app.use((err, req, res, next) => {
+  res.send(err)
+})
+
 app.listen(port, () => {
   console.log(`Escuchando: ${port}`)
 })
