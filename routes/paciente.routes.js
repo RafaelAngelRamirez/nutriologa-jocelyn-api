@@ -2,6 +2,7 @@ const app = require("express")()
 const Paciente = require("../models/paciente.model")
 
 app.post("/", (req, res, next) => {
+  console.log(req.body)
   delete req.body.datosAntropometricos
 
   new Paciente(req.body)
@@ -48,14 +49,14 @@ app.delete("/id/:id", (req, res) => {
 })
 
 app.get("/", (req, res) => {
-  Pacientes.find()
+  Paciente.find()
     .select("+nombre +fechaDeNacimiento +sexo +celular +metasDelPaciente")
     .exec()
     .then(p => res.send(p))
     .catch(_ => next(_))
 })
 app.get("/id/:id", (req, res) => {
-  Pacientes.findById(req.params.id)
+  Paciente.findById(req.params.id)
     .exec()
     .then(p => res.send(p))
     .catch(_ => next(_))
