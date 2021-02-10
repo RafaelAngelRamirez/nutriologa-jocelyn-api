@@ -12,10 +12,10 @@ app.post("/", (req, res, next) => {
 })
 
 app.put("/", (req, res, next) => {
-  Paciente.findById(req.body.id)
+  Paciente.findById(req.body._id)
     .exec()
     .then(p => {
-      if (p) throw "No existe el id"
+      if (!p) throw "No existe el id"
       delete req.body._id
       Object.assign(p, req.body)
       return p.save()

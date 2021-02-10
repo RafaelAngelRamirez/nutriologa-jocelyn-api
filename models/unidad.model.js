@@ -5,7 +5,7 @@ const unidad = mongoose.Schema({
     type: String,
     required: [true, "El nombre de la unidad es obligatorio"],
 
-    unique:[true, "El nombre de la unidad debe ser unico"]
+    unique: [true, "El nombre de la unidad debe ser unico"],
   },
 
   descripcion: String,

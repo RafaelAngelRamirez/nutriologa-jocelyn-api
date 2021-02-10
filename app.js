@@ -2,13 +2,14 @@ const express = require("express")
 const app = express()
 const cors = require("cors")
 const port = 3000
-var bodyParser = require("body-parser")
-
+const bodyParser = require("body-parser")
+const autoParser = require("express-query-auto-parse")
 const routes = require("./routes/routes")
 
 const mongoose = require("mongoose")
 app.use(cors())
 app.use(bodyParser.json({ limit: "50mb" }))
+app.use(autoParser());
 app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }))
 
 mongoose.set("useNewUrlParser", true)

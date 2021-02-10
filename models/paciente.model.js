@@ -15,8 +15,9 @@ const PacienteSchema = new Schema(
 
     metasDelPaciente: [String],
 
-    condiciónActual: {
+    condicionActual: {
       embarazo: Boolean,
+      ultimaMenstruacion: Date,
       dm: Boolean,
       ht: Boolean,
       dl: Boolean,
@@ -65,6 +66,7 @@ const PacienteSchema = new Schema(
 
     datosAntropometricos: [
       {
+        compensacion: Number,
         peso: Number,
         // talla es la estatura
         talla: Number,
