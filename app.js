@@ -29,7 +29,7 @@ app.use(routes)
 
 app.use((err, req, res, next) => {
   console.log(err)
-  res.send(err)
+  res.status(500).send(err)
 })
 
 app.listen(port, () => {
