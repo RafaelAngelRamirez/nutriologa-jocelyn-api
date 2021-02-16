@@ -1,7 +1,8 @@
+require("dotenv")
 const express = require("express")
 const app = express()
 const cors = require("cors")
-const port = 3000
+const port = prcess.env.PORT ?? 3000
 const bodyParser = require("body-parser")
 const autoParser = require("express-query-auto-parse")
 const routes = require("./routes/routes")
@@ -17,7 +18,7 @@ mongoose.set("useUnifiedTopology", true)
 mongoose.set("useCreateIndex", true)
 
 mongoose
-  .connect("mongodb://localhost:27017/nutriologa-jocelyn")
+  .connect(process.env.URI)
   .then(re => {
     console.log("[ INFO ] Conectado a la BD")
   })
