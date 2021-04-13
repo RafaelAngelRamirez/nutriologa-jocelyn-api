@@ -58,8 +58,7 @@ app.put("/", (req, res, next) => {
     .catch(_ => next(_))
 })
 
-app.put("/datos-antropometricos/crear", (req, res, next) =>
-{
+app.put("/datos-antropometricos/crear", (req, res, next) => {
   Paciente.findById(req.body.idPaciente)
     .exec()
     .then(p => {
@@ -114,14 +113,14 @@ app.delete(
   }
 )
 
-app.delete("/id/:id", (req, res) => {
-  Paciente.findById(req.params.id)
+app.delete("/id/:id", (req, res, next) => {
+  Paciente.findById( req.params.id )
     .exec()
     .then(p => {
-      if (!id) throw "No existe el id"
+      if (!p) throw "No existe el id"
       return p.remove()
     })
-    .then(p => res.send(p))
+    .then(p => res.send({}))
     .catch(_ => next(_))
 })
 
