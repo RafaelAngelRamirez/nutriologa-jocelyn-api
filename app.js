@@ -9,9 +9,9 @@ const routes = require("./routes/routes")
 
 const mongoose = require("mongoose")
 app.use(cors())
-app.use(bodyParser.json({ limit: "50mb" }))
+app.use(express.json({ limit: "10mb" }))
 app.use(autoParser());
-app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }))
+app.use(express.urlencoded({ limit: "10mb", extended: true }))
 
 mongoose.set("useNewUrlParser", true)
 mongoose.set("useUnifiedTopology", true)
