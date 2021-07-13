@@ -124,14 +124,14 @@ app.delete("/id/:id", (req, res, next) => {
     .catch(_ => next(_))
 })
 
-app.get("/", (req, res) => {
+app.get("/", (req, res, next) => {
   Paciente.find()
     .select("+nombre +fechaDeNacimiento +sexo +celular +metasDelPaciente")
     .exec()
     .then(p => res.send(p))
     .catch(_ => next(_))
 })
-app.get("/id/:id", (req, res) => {
+app.get("/id/:id", (req, res, next) => {
   Paciente.findById(req.params.id)
     .exec()
     .then(p => res.send(p))
